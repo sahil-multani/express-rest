@@ -1,18 +1,18 @@
-const express = require("express");
-const validate = require("express-validation");
-const controller = require("../../controllers/expense.controller");
-const { authorize, ADMIN, LOGGED_USER } = require("../../middlewares/auth");
-const Usercontroller = require("../../controllers/user.controller");
+const express = require('express');
+const validate = require('express-validation');
+const controller = require('../../controllers/expense.controller');
+const { authorize, ADMIN, LOGGED_USER } = require('../../middlewares/auth');
+const Usercontroller = require('../../controllers/user.controller');
 
 const router = express.Router();
 const {
   getExpense,
   createExpense,
   deleteExpense,
-} = require("../../validations/expense.validation");
+} = require('../../validations/expense.validation');
 
 router
-  .route("/get/:user_id")
+  .route('/get/:user_id')
   /**
    * @api {get} v1/expense/get/:userId  List Expense
    * @apiDescription get list of  Expenses
@@ -23,8 +23,7 @@ router
    *
    * @apiHeader {String} Authorization   User's access token
    *
-   
-   
+
    *
    * @apiSuccess {Object[]} created expense data.
    *
@@ -35,7 +34,7 @@ router
   .get(authorize(), validate(getExpense), controller.get);
 
 router
-  .route("/create")
+  .route('/create')
   /**
    * @api {post} v1/expense/create create/Update Expense
    * @apiDescription create and update Expense
@@ -60,10 +59,10 @@ router
   .post(authorize(), validate(createExpense), controller.create);
 
 router
-  .route("/delete")
+  .route('/delete')
   /**
    * @api {post} v1/expense/delete Delete Expense
-   * @apiDescription delete Expense 
+   * @apiDescription delete Expense
    * @apiVersion 1.0.0
    * @apiName DeleteExpense
    * @apiGroup expense
@@ -72,7 +71,7 @@ router
    * @apiHeader {String} Authorization   User's access token
    *
    * @apiParam  {String}              id     Delete the expense by given Id
-  
+
    *
    * @apiSuccess {Object[]} returns empty Array.
    *

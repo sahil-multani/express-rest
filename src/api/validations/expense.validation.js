@@ -1,5 +1,5 @@
-const Joi = require("joi");
-const Expense = require("../models/expense.model");
+const Joi = require('joi');
+const Expense = require('../models/expense.model');
 
 module.exports = {
   createExpense: {
